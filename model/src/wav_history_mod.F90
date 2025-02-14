@@ -611,7 +611,10 @@ contains
       end if
       if (lfldir) then
         if (mapsta(mapsf(isea,2),mapsf(isea,1)) > 0 )  then
-          varloc(:) = mod(630. - rade*varloc(:), 360.)
+          do k=1,size(varloc,1)
+            if (varloc(k).NE.UNDEF) varloc(k) = mod(630. - rade*varloc(k), 360.)
+          enddo
+!          varloc(:) = mod(630. - rade*varloc(:), 360.)
         end if
       end if
       var3d(jsea,:) = varloc(:)
